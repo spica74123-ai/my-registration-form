@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลงทะเบียนสมัครเข้าใช้งานระบบ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #e5e4d7;
+            /* เปลี่ยนเป็นสีพื้นหลังโทนกากีอ่อน */
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            /* ปรับมุมให้เหลี่ยมขึ้นดูแข็งแรง */
+            border: 1px solid #d1d5db;
+            outline: none;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:hover {
+            border-color: #a1a1aa;
+            background-color: #ffffff;
+        }
+
+        .form-input:focus {
+            border-color: #4b5320;
+            /* สีเขียวทหาร */
+            box-shadow: 0 0 0 3px rgba(75, 83, 32, 0.2);
+            background-color: #ffffff;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            /* ปรับตัวหนาขึ้น */
+            color: #3f3f46;
+            margin-bottom: 0.25rem;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Staggered delays */
+        .delay-100 {
+            animation-delay: 100ms;
+            opacity: 0;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+            opacity: 0;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms;
+            opacity: 0;
+        }
+
+        .delay-400 {
+            animation-delay: 400ms;
+            opacity: 0;
+        }
+
+        .delay-500 {
+            animation-delay: 500ms;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div
+        class="max-w-2xl w-full bg-white rounded-lg shadow-xl overflow-hidden border-t-4 border-[#4b5320] animate-fade-in-up">
+        <div class="bg-[#4b5320] p-6 text-white text-center">
+            <i data-lucide="shield-check" class="w-14 h-14 mx-auto mb-2 text-[#e5e4d7] animate-float"></i>
+            <h2 class="text-2xl font-bold tracking-wide">ลงทะเบียนสมัครเข้าใช้งานระบบ</h2>
+            <p class="text-[#e5e4d7] text-sm mt-1">กรุณากรอกข้อมูลของท่านให้ครบถ้วนเพื่อทำการลงทะเบียน</p>
+        </div>
+
+        <form id="registrationForm" class="p-6 md:p-8 space-y-6">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in-up delay-100">
+                <!-- 1. ยศ -->
+                <div>
+                    <label for="rank" class="form-label">ยศ</label>
+                    <input type="text" id="rank" name="rank" required class="form-input" placeholder="นาย, ส.อ. ,ร.ต.">
+                </div>
+
+                <!-- 2. ชื่อ -->
+                <div>
+                    <label for="firstName" class="form-label">ชื่อ</label>
+                    <input type="text" id="firstName" name="firstName" required class="form-input"
+                        placeholder="ชื่อจริง">
+                </div>
+
+                <!-- 3. สกุล -->
+                <div>
+                    <label for="lastName" class="form-label">สกุล</label>
+                    <input type="text" id="lastName" name="lastName" required class="form-input" placeholder="นามสกุล">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in-up delay-200">
+                <!-- 4. สังกัด -->
+                <div>
+                    <label for="affiliation" class="form-label">สังกัด</label>
+                    <input type="text" id="affiliation" name="affiliation" required class="form-input"
+                        placeholder="ระบุสังกัดของท่าน">
+                </div>
+
+                <!-- 5. หน่วย -->
+                <div>
+                    <label for="unit" class="form-label">หน่วย</label>
+                    <input type="text" id="unit" name="unit" required class="form-input" placeholder="ระบุหน่วยงาน">
+                </div>
+            </div>
+
+            <!-- 6. ตำแหน่ง และ ตำแหน่งในสนาม -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in-up delay-300">
+                <div>
+                    <label for="position" class="form-label">ตำแหน่ง (การทำงาน)</label>
+                    <input type="text" id="position" name="position" required class="form-input"
+                        placeholder="ตำแหน่งปัจจุบัน">
+                </div>
+                <div>
+                    <label for="fieldPosition" class="form-label">ตำแหน่งในสนาม</label>
+                    <input type="text" id="fieldPosition" name="fieldPosition" required class="form-input"
+                        placeholder="ระบุตำแหน่งในสนาม">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in-up delay-400">
+                <!-- 7. line -->
+                <div>
+                    <label for="lineId" class="form-label">Line ID</label>
+                    <input type="text" id="lineId" name="lineId" class="form-input" placeholder="ไอดีไลน์">
+                </div>
+
+                <!-- 8. เบอร์โทร -->
+                <div>
+                    <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="phone" name="phone" required class="form-input" placeholder="08X-XXX-XXXX">
+                </div>
+
+                <!-- 9. อีเมล -->
+                <div>
+                    <label for="email" class="form-label">อีเมล</label>
+                    <input type="email" id="email" name="email" required class="form-input"
+                        placeholder="example@email.com">
+                </div>
+            </div>
+
+            <!-- แสดงสถานะ -->
+            <div id="statusMessage" class="hidden rounded-md p-4 mt-4 text-sm text-center"></div>
+
+            <div class="pt-4 animate-fade-in-up delay-500">
+                <button type="submit" id="submitBtn"
+                    class="w-full bg-[#4b5320] hover:bg-[#3a4018] text-white font-semibold py-3 px-4 rounded transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95 flex items-center justify-center shadow-md">
+                    <i data-lucide="send" class="w-5 h-5 mr-2"></i>
+                    <span>ส่งข้อมูลลงทะเบียน</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // ** สิ่งที่ต้องทำ: นำ URL ของ Web App ที่ได้จาก Google Apps Script มาใส่ในตัวแปรนี้ **
+        // ถ้ายังไม่มี ระบบจะทำงานในโหมด "จำลอง (Demo)"
+        const GOOGLE_SCRIPT_URL = 'ใส่_URL_ที่ได้จาก_APPS_SCRIPT_ตรงนี้';
+
+        const form = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMessage = document.getElementById('statusMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // เปลี่ยนสถานะปุ่มเป็นกำลังส่ง
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 mr-2 animate-spin"></i><span>กำลังบันทึกข้อมูล...</span>';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            lucide.createIcons();
+
+            statusMessage.classList.add('hidden');
+
+            // --- โหมดจำลอง (Demo Mode) ---
+            // ถ้ายืนยันว่ายังไม่ได้ใส่ URL ระบบจะจำลองการส่งข้อมูลให้ดูหน้าตาว่าสำเร็จเป็นอย่างไร
+            if (GOOGLE_SCRIPT_URL === 'ใส่_URL_ที่ได้จาก_APPS_SCRIPT_ตรงนี้' || GOOGLE_SCRIPT_URL === '') {
+                setTimeout(() => {
+                    showStatus('✅ (จำลอง) ลงทะเบียนสำเร็จ! รูปแบบฟอร์มพร้อมใช้งานแล้ว\nหากต้องการบันทึกลง Google Sheet โปรดตั้งค่า Apps Script และนำ URL มาใส่ในโค้ด', 'success');
+                    form.reset(); // ล้างฟอร์ม
+                    resetButton(originalBtnHtml);
+                }, 1500);
+                return;
+            }
+            // --------------------------
+
+            try {
+                // ดึงข้อมูลจากฟอร์ม
+                const formData = new FormData(form);
+
+                // ส่งข้อมูลไปยัง Google Apps Script
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.result === 'success') {
+                    showStatus('✅ ลงทะเบียนสำเร็จ ข้อมูลของคุณถูกบันทึกลง Sheet เรียบร้อยแล้ว', 'success');
+                    form.reset(); // ล้างฟอร์ม
+                } else {
+                    throw new Error(result.error || 'เกิดข้อผิดพลาดไม่ทราบสาเหตุ');
+                }
+            } catch (error) {
+                console.error('Error!', error.message);
+                showStatus('❌ เกิดข้อผิดพลาดในการส่งข้อมูล: กรุณาตรวจสอบลิงก์ URL อีกครั้ง', 'error');
+            } finally {
+                resetButton(originalBtnHtml);
+            }
+        });
+
+        function resetButton(originalHtml) {
+            submitBtn.innerHTML = originalHtml;
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            lucide.createIcons();
+        }
+
+        function showStatus(message, type) {
+            statusMessage.innerText = message;
+            statusMessage.className = `p-4 mt-4 text-sm text-center rounded-md font-medium whitespace-pre-line ${type === 'success' ? 'bg-green-100 text-green-700 border border-green-200' : 'bg-red-100 text-red-700 border border-red-200'
+                }`;
+            statusMessage.classList.remove('hidden');
+        }
+    </script>
+</body>
+
+</html>
