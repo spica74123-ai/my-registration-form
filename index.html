@@ -215,7 +215,7 @@
         // สำคัญ: นำ URL ที่ได้จาก Google Apps Script มาวางในเครื่องหมายคำพูดด้านล่างนี้
         // ตัวอย่าง: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycb.../exec';
         // =========================================================================
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwl98WeEteDeFv-eHGS-mStisyv6Ah0XYNP1Eej5xqpCdfSG9LpeknEjEFUUIGCFoK7/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwl98WeEteDeFv-eHGS-mStisyv6Ah0XYNP1Eej5xqpCdfSG9LpeknEjEFUUIGCFoK7/exec'; // <-- วางลิงก์ทับตรงนี้ (ต้องมีเครื่องหมาย ' ' ครอบอยู่)
 
         const form = document.getElementById('registrationForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -224,9 +224,9 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // แจ้งเตือนหากลืมใส่ URL
-            if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwl98WeEteDeFv-eHGS-mStisyv6Ah0XYNP1Eej5xqpCdfSG9LpeknEjEFUUIGCFoK7/exec' || GOOGLE_SCRIPT_URL === '') {
-                showStatus('⚠️ กรุณานำ URL จาก Google Apps Script มาใส่ในไฟล์ HTML บรรทัดที่ 146 ก่อนอัปโหลด', 'error');
+            // แจ้งเตือนหากลืมใส่ URL หรือใส่ URL ไม่ถูกต้อง (ไม่ขึ้นต้นด้วย http)
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.trim() === '' || !GOOGLE_SCRIPT_URL.startsWith('http')) {
+                showStatus('⚠️ ไม่พบลิงก์ Google Apps Script หรือลิงก์ไม่ถูกต้อง กรุณาตรวจสอบการตั้งค่าตัวแปร GOOGLE_SCRIPT_URL', 'error');
                 return;
             }
 
