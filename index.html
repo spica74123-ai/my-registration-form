@@ -6,21 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ลงทะเบียนสมัครเข้าใช้งานระบบ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Prompt', sans-serif;
             background-color: #e5e4d7;
-            /* เปลี่ยนเป็นสีพื้นหลังโทนกากีอ่อน */
+            /* สีพื้นหลังโทนกากีอ่อน */
         }
 
         .form-input {
             width: 100%;
             padding: 0.5rem 1rem;
             border-radius: 0.25rem;
-            /* ปรับมุมให้เหลี่ยมขึ้นดูแข็งแรง */
             border: 1px solid #d1d5db;
             outline: none;
             background-color: #fafafa;
@@ -43,7 +41,6 @@
             display: block;
             font-size: 0.875rem;
             font-weight: 600;
-            /* ปรับตัวหนาขึ้น */
             color: #3f3f46;
             margin-bottom: 0.25rem;
         }
@@ -116,7 +113,11 @@
     <div
         class="max-w-2xl w-full bg-white rounded-lg shadow-xl overflow-hidden border-t-4 border-[#4b5320] animate-fade-in-up">
         <div class="bg-[#4b5320] p-6 text-white text-center">
-            <i data-lucide="shield-check" class="w-14 h-14 mx-auto mb-2 text-[#e5e4d7] animate-float"></i>
+            <!-- เปลี่ยนจากไอคอน lucide เป็นแท็ก img สำหรับแสดงโลโก้ -->
+            <img src="Gemini_Generated_Image_5dsamg5dsamg5dsa-Photoroom.png" alt="โลโก้หน่วยงาน"
+                class="h-28 w-auto mx-auto mb-3 animate-float drop-shadow-md object-contain"
+                onerror="this.onerror=null; this.src='https://via.placeholder.com/112x112?text=Logo';">
+
             <h2 class="text-2xl font-bold tracking-wide">ลงทะเบียนสมัครเข้าใช้งานระบบ</h2>
             <p class="text-[#e5e4d7] text-sm mt-1">กรุณากรอกข้อมูลของท่านให้ครบถ้วนเพื่อทำการลงทะเบียน</p>
         </div>
@@ -127,7 +128,7 @@
                 <!-- 1. ยศ -->
                 <div>
                     <label for="rank" class="form-label">ยศ</label>
-                    <input type="text" id="rank" name="rank" required class="form-input" placeholder="นาย, ส.อ. ,ร.ต.">
+                    <input type="text" id="rank" name="rank" required class="form-input" placeholder="นาย, ส.อ., ร.ต.">
                 </div>
 
                 <!-- 2. ชื่อ -->
@@ -208,12 +209,13 @@
     </div>
 
     <script>
-        // Initialize Icons
         lucide.createIcons();
 
-        // ** สิ่งที่ต้องทำ: นำ URL ของ Web App ที่ได้จาก Google Apps Script มาใส่ในตัวแปรนี้ **
-        // ถ้ายังไม่มี ระบบจะทำงานในโหมด "จำลอง (Demo)"
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwl98WeEteDeFv-eHGS-mStisyv6Ah0XYNP1Eej5xqpCdfSG9LpeknEjEFUUIGCFoK7/exec';
+        // =========================================================================
+        // สำคัญ: นำ URL ที่ได้จาก Google Apps Script มาวางในเครื่องหมายคำพูดด้านล่างนี้
+        // ตัวอย่าง: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycb.../exec';
+        // =========================================================================
+        const GOOGLE_SCRIPT_URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=AWDtjMWHqdl0wX8O0Mzj2HxhAs82FJZF4AMumLQze7votx0FG3v8r4ZQgFkDvVdZ0fFNPVRQFhBv5nSFu5jiqgPVm5hbaUXFJCS70Su_LyLD--WN9UcrhgkACnFldj6S7G2Qv7FRHy_U6hcpviqgbS3drILwok5ThCXcC1dStOp-MyCxRZ7FPZ_HAcIKVIOFrUv0u6zDsB259UsWIk18uuU8FMn4akmh8c6H01z1HWSHbrCI8CTvLZjHTi_4qJZQOctii-_wKtNNWCV8EDC3orLtC703kXhq5g&lib=M2sSgHMH0CpGCs2ZPYrLnsUnMMHei8RHb';
 
         const form = document.getElementById('registrationForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -222,63 +224,54 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // เปลี่ยนสถานะปุ่มเป็นกำลังส่ง
+            // แจ้งเตือนหากลืมใส่ URL
+            if (GOOGLE_SCRIPT_URL === 'https://script.googleusercontent.com/macros/echo?user_content_key=AWDtjMWHqdl0wX8O0Mzj2HxhAs82FJZF4AMumLQze7votx0FG3v8r4ZQgFkDvVdZ0fFNPVRQFhBv5nSFu5jiqgPVm5hbaUXFJCS70Su_LyLD--WN9UcrhgkACnFldj6S7G2Qv7FRHy_U6hcpviqgbS3drILwok5ThCXcC1dStOp-MyCxRZ7FPZ_HAcIKVIOFrUv0u6zDsB259UsWIk18uuU8FMn4akmh8c6H01z1HWSHbrCI8CTvLZjHTi_4qJZQOctii-_wKtNNWCV8EDC3orLtC703kXhq5g&lib=M2sSgHMH0CpGCs2ZPYrLnsUnMMHei8RHb' || GOOGLE_SCRIPT_URL === '') {
+                showStatus('⚠️ กรุณานำ URL จาก Google Apps Script มาใส่ในไฟล์ HTML บรรทัดที่ 146 ก่อนอัปโหลด', 'error');
+                return;
+            }
+
+            // เปลี่ยนปุ่มเป็นสถานะกำลังโหลด
             const originalBtnHtml = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 mr-2 animate-spin"></i><span>กำลังบันทึกข้อมูล...</span>';
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
             lucide.createIcons();
-
             statusMessage.classList.add('hidden');
 
-            // --- โหมดจำลอง (Demo Mode) ---
-            // ถ้ายืนยันว่ายังไม่ได้ใส่ URL ระบบจะจำลองการส่งข้อมูลให้ดูหน้าตาว่าสำเร็จเป็นอย่างไร
-            if (GOOGLE_SCRIPT_URL === 'ใส่_URL_ที่ได้จาก_APPS_SCRIPT_ตรงนี้' || GOOGLE_SCRIPT_URL === '') {
-                setTimeout(() => {
-                    showStatus('✅ (จำลอง) ลงทะเบียนสำเร็จ! รูปแบบฟอร์มพร้อมใช้งานแล้ว\nหากต้องการบันทึกลง Google Sheet โปรดตั้งค่า Apps Script และนำ URL มาใส่ในโค้ด', 'success');
-                    form.reset(); // ล้างฟอร์ม
-                    resetButton(originalBtnHtml);
-                }, 1500);
-                return;
-            }
-            // --------------------------
-
             try {
-                // ดึงข้อมูลจากฟอร์ม
                 const formData = new FormData(form);
+                // แปลงข้อมูลให้อยู่ในรูปแบบ URL-encoded ที่ Google Apps Script อ่านได้แม่นยำที่สุด
+                const data = new URLSearchParams(formData);
 
-                // ส่งข้อมูลไปยัง Google Apps Script
+                // ส่งข้อมูล
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    body: formData
+                    body: data
                 });
 
                 const result = await response.json();
 
                 if (result.result === 'success') {
-                    showStatus('✅ ลงทะเบียนสำเร็จ ข้อมูลของคุณถูกบันทึกลง Sheet เรียบร้อยแล้ว', 'success');
+                    showStatus('✅ ลงทะเบียนสำเร็จ ข้อมูลของคุณถูกส่งเข้าระบบเรียบร้อยแล้ว', 'success');
                     form.reset(); // ล้างฟอร์ม
                 } else {
-                    throw new Error(result.error || 'เกิดข้อผิดพลาดไม่ทราบสาเหตุ');
+                    throw new Error(result.error || 'ระบบไม่สามารถประมวลผลได้');
                 }
             } catch (error) {
-                console.error('Error!', error.message);
-                showStatus('❌ เกิดข้อผิดพลาดในการส่งข้อมูล: กรุณาตรวจสอบลิงก์ URL อีกครั้ง', 'error');
+                console.error('Error:', error);
+                showStatus('❌ เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง', 'error');
             } finally {
-                resetButton(originalBtnHtml);
+                // คืนค่าปุ่ม
+                submitBtn.innerHTML = originalBtnHtml;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                lucide.createIcons();
             }
         });
 
-        function resetButton(originalHtml) {
-            submitBtn.innerHTML = originalHtml;
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-            lucide.createIcons();
-        }
-
         function showStatus(message, type) {
             statusMessage.innerText = message;
-            statusMessage.className = `p-4 mt-4 text-sm text-center rounded-md font-medium whitespace-pre-line ${type === 'success' ? 'bg-green-100 text-green-700 border border-green-200' : 'bg-red-100 text-red-700 border border-red-200'
+            statusMessage.className = `p-4 mt-4 text-sm text-center rounded-md font-medium whitespace-pre-line ${type === 'success' ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-red-100 text-red-800 border border-red-300'
                 }`;
             statusMessage.classList.remove('hidden');
         }
