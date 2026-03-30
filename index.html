@@ -215,7 +215,7 @@
         // สำคัญ: นำ URL ที่ได้จาก Google Apps Script มาวางในเครื่องหมายคำพูดด้านล่างนี้
         // ตัวอย่าง: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycb.../exec';
         // =========================================================================
-        const GOOGLE_SCRIPT_URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=AWDtjMWHqdl0wX8O0Mzj2HxhAs82FJZF4AMumLQze7votx0FG3v8r4ZQgFkDvVdZ0fFNPVRQFhBv5nSFu5jiqgPVm5hbaUXFJCS70Su_LyLD--WN9UcrhgkACnFldj6S7G2Qv7FRHy_U6hcpviqgbS3drILwok5ThCXcC1dStOp-MyCxRZ7FPZ_HAcIKVIOFrUv0u6zDsB259UsWIk18uuU8FMn4akmh8c6H01z1HWSHbrCI8CTvLZjHTi_4qJZQOctii-_wKtNNWCV8EDC3orLtC703kXhq5g&lib=M2sSgHMH0CpGCs2ZPYrLnsUnMMHei8RHb';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwl98WeEteDeFv-eHGS-mStisyv6Ah0XYNP1Eej5xqpCdfSG9LpeknEjEFUUIGCFoK7/exec';
 
         const form = document.getElementById('registrationForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -225,7 +225,7 @@
             e.preventDefault();
 
             // แจ้งเตือนหากลืมใส่ URL
-            if (GOOGLE_SCRIPT_URL === 'https://script.googleusercontent.com/macros/echo?user_content_key=AWDtjMWHqdl0wX8O0Mzj2HxhAs82FJZF4AMumLQze7votx0FG3v8r4ZQgFkDvVdZ0fFNPVRQFhBv5nSFu5jiqgPVm5hbaUXFJCS70Su_LyLD--WN9UcrhgkACnFldj6S7G2Qv7FRHy_U6hcpviqgbS3drILwok5ThCXcC1dStOp-MyCxRZ7FPZ_HAcIKVIOFrUv0u6zDsB259UsWIk18uuU8FMn4akmh8c6H01z1HWSHbrCI8CTvLZjHTi_4qJZQOctii-_wKtNNWCV8EDC3orLtC703kXhq5g&lib=M2sSgHMH0CpGCs2ZPYrLnsUnMMHei8RHb' || GOOGLE_SCRIPT_URL === '') {
+            if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwl98WeEteDeFv-eHGS-mStisyv6Ah0XYNP1Eej5xqpCdfSG9LpeknEjEFUUIGCFoK7/exec' || GOOGLE_SCRIPT_URL === '') {
                 showStatus('⚠️ กรุณานำ URL จาก Google Apps Script มาใส่ในไฟล์ HTML บรรทัดที่ 146 ก่อนอัปโหลด', 'error');
                 return;
             }
